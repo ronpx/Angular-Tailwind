@@ -1,49 +1,41 @@
-<div class="max-w-sm mx-auto mt-10 rounded overflow-hidden shadow-lg space-y-4">
-  <img
-    class="h-64 w-full object-cover object-center"
-    src="https://source.unsplash.com/random"
-    alt="Random unsplash photo"
-  />
-  <div class="px-6">
-    <div class="font-bold text-xl">Angular w/ Tailwind</div>
-    <p class="text-gray-700 text-base">
-      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus
-      quia, nulla! Maiores et perferendis eaque, exercitationem praesentium
-      nihil.
-    </p>
-  </div>
-  <div class="px-6 pb-4 space-x-2">
-    <a
-      href="https://angular.io"
-      target="_blank"
-      rel="noreferrer"
-      class="inline-block bg-red-500 rounded-full px-3 py-1 text-sm font-semibold text-white hover:bg-red-700"
-    >
-      #angular
-    </a>
-    <a
-      href="https://tailwindcss.com"
-      target="_blank"
-      rel="noreferrer"
-      class="inline-block bg-indigo-500 rounded-full px-3 py-1 text-sm font-semibold text-white hover:bg-indigo-700"
-    >
-      #tailwind
-    </a>
-    <a
-      href="https://notiz.dev"
-      target="_blank"
-      rel="noreferrer"
-      class="inline-block bg-blue-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 hover:bg-blue-400"
-    >
-      #notiz
-    </a>
-  </div>
+<div id="app">
+  <nav class="navbar navbar-expand navbar-dark bg-dark">
+    <a href="#" class="navbar-brand">bezKoder</a>
+    <ul class="navbar-nav mr-auto" routerLinkActive="active">
+      <li class="nav-item">
+        <a href="/home" class="nav-link" routerLink="home">Home </a>
+      </li>
+      <li class="nav-item" *ngIf="showAdminBoard">
+        <a href="/admin" class="nav-link" routerLink="admin">Admin Board</a>
+      </li>
+      <li class="nav-item" *ngIf="showModeratorBoard">
+        <a href="/mod" class="nav-link" routerLink="mod">Moderator Board</a>
+      </li>
+      <li class="nav-item">
+        <a href="/user" class="nav-link" *ngIf="isLoggedIn" routerLink="user">User</a>
+      </li>
+    </ul>
+
+    <ul class="navbar-nav ml-auto" *ngIf="!isLoggedIn">
+      <li class="nav-item">
+        <a href="/register" class="nav-link" routerLink="register">Sign Up</a>
+      </li>
+      <li class="nav-item">
+        <a href="/login" class="nav-link" routerLink="login">Login</a>
+      </li>
+    </ul>
+
+    <ul class="navbar-nav ml-auto" *ngIf="isLoggedIn">
+      <li class="nav-item">
+        <a href="/profile" class="nav-link" routerLink="profile">{{ username }}</a>
+      </li>
+      <li class="nav-item">
+        <a href class="nav-link" (click)="logout()">LogOut</a>
+      </li>
+    </ul>
+  </nav>
+
+<div class="container">
+  <router-outlet></router-outlet>
 </div>
 
-hello 
-
-
-<div class="bg-white rounded shadow border p-6 w-64">
-  <h5 class="text-3xl font-bold mb-4 mt-0">My Title</h5>
-  <p class="text-gray-700 text-sm">Content goes here</p>
-</div>
